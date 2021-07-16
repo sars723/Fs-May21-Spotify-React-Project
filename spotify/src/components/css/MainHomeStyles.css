@@ -1,0 +1,35 @@
+.main-home .main-home-album-title {
+  font-weight: bold;
+  font-size: 0.9em;
+}
+.main-home .main-home-album-title:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+.main-home .main-home-artist-name:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+#throwback {
+  margin-top: 40px;
+}
+#throwback .card,
+#shows .card {
+  background-color: rgba(0, 0, 0, 0.123);
+  cursor: pointer;
+  transition: 0.75s;
+}
+#throwback .card:hover,
+#shows .card:hover {
+  transform: scale(1.05);
+}
+#throwback .card-title,
+#shows .card-title {
+  color: white;
+  font-size: 0.9em;
+}
+
+/* Shows section */
+#shows .shows-cards img {
+  border-radius: 20px;
+}

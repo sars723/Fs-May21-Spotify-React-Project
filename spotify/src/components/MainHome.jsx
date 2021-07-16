@@ -1,11 +1,38 @@
 import React, { Component } from "react";
 import "./css/HomeStyles.css";
-import { Link } from "react-router-dom";
+import "./css/MainHomeStyles.css";
+import { Link, withRouter } from "react-router-dom";
+import Song from "./Song";
 
-export default class MainHome extends Component {
+class MainHome extends Component {
+  state = {
+    albums: [],
+    isLoading: true,
+    isError: false,
+  };
+  fetchAlbums = async () => {
+    try {
+      const response = await fetch(
+        "https://striveschool-api.herokuapp.com/api/deezer/search?q=shakira"
+      );
+      if (response.ok) {
+        const fetchedAlbums = await response.json();
+        this.setState({ isLoading: false, albums: fetchedAlbums.data });
+        console.log(this.state.albums);
+      } else {
+        this.setState({ isLoading: false, isError: true });
+      }
+    } catch (error) {
+      this.setState({ isLoading: false, isError: true });
+      console.log(error);
+    }
+  };
+  componentDidMount = () => {
+    this.fetchAlbums();
+  };
   render() {
     return (
-      <main>
+      <main className="main-home">
         <div className="container-fluid">
           <nav className="main-nav navbar navbar-expand-md">
             <div className="container-fluid">
@@ -54,12 +81,36 @@ export default class MainHome extends Component {
                       SHOWS
                     </a>
                   </li>
-                  <Link className="nav-link" to="/artist">
+                  <li
+                    className="nav-item"
+                    onClick={() =>
+                      this.props.history.push(
+                        "/artist/" + this.state.albums[0].artist.id
+                      )
+                    }
+                  >
+                    <a className="nav-link" href="">
+                      artist
+                    </a>
+                  </li>
+                  <li
+                    className="nav-item"
+                    onClick={() =>
+                      this.props.history.push(
+                        "/album/" + this.state.albums[0].album.id
+                      )
+                    }
+                  >
+                    <a className="nav-link" href="">
+                      album
+                    </a>
+                  </li>
+                  {/*  <Link className="nav-link" to="/artist">
                     Artist
                   </Link>
                   <Link className="nav-link" to="/album">
                     Album
-                  </Link>
+                  </Link> */}
                   <li className="nav-item">
                     <a className="nav-link" href="#search">
                       SEARCH
@@ -123,9 +174,47 @@ export default class MainHome extends Component {
                     row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-6
                     g-4
                   "
-            ></div>
+            >
+              {this.state.albums.map((album) => (
+                /* <Song
+                    albumId={album.album.id}
+                    artistId={album.artist.id}
+                    img={album.album.cover_medium}
+                    albumTitle={album.album.title}
+                    artistName={album.artist.name}
+                  /> */
+
+                <div className="col text-center text-white mb-3">
+                  <img
+                    className="img-fluid"
+                    src={album.album.cover_medium}
+                    alt="img placeholder"
+                  />
+                  <div className="p-1">
+                    <p
+                      className="main-home-album-title"
+                      onClick={() =>
+                        this.props.history.push("/album/" + album.album.id)
+                      }
+                    >
+                      {album.album.title}
+                    </p>
+
+                    <p
+                      className="main-home-artist-name"
+                      onClick={() =>
+                        this.props.history.push("/artist/" + album.artist.id)
+                      }
+                    >
+                      {" "}
+                      {album.artist.name}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </section>
-          <section className="container" id="shows">
+          {/*  <section className="container" id="shows">
             <h2>Shows to try</h2>
             <div
               className="
@@ -168,9 +257,10 @@ export default class MainHome extends Component {
                     g-4
                   "
             ></div>
-          </section>
+          </section> */}
         </div>
       </main>
     );
   }
 }
+export default MainHome;
