@@ -10,10 +10,16 @@ class MainHome extends Component {
     isLoading: true,
     isError: false,
   };
+  getSong = () => {
+    this.props.getSongImg(this.state.albums[0].album.cover_medium);
+    /* this.props.getSongArtist(this.state.albums[0].album.artist.name);
+    this.props.getSongTitle(this.state.albums[0].album.album.title); */
+  };
   fetchAlbums = async () => {
     try {
       const response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/deezer/search?q=shakira"
+        "https://striveschool-api.herokuapp.com/api/deezer/search?q=" +
+          this.props.query
       );
       if (response.ok) {
         const fetchedAlbums = await response.json();
@@ -29,6 +35,11 @@ class MainHome extends Component {
   };
   componentDidMount = () => {
     this.fetchAlbums();
+  };
+  componentDidUpdate = (prevProps) => {
+    if (prevProps.query !== this.props.query) {
+      this.fetchAlbums();
+    }
   };
   render() {
     return (
@@ -189,11 +200,7 @@ class MainHome extends Component {
                     className="img-fluid"
                     src={album.album.cover_medium}
                     alt="img placeholder"
-                    onClick={() => {
-                      this.props.getSongImg(album.album.cover_medium);
-                      this.props.getSongArtist(album.artist.name);
-                      this.props.getSongTitle(album.album.title);
-                    }}
+                    onClick={this.getSong}
                   />
                   <div className="p-1">
                     <p

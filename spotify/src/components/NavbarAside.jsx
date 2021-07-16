@@ -2,8 +2,16 @@ import React, { Component } from "react";
 import "./css/NavbarAsideStyles.css";
 import { Nav, Form, FormControl, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-
+import { FaSearch } from "react-icons/fa";
 export default class NavbarAside extends Component {
+  state = {
+    query: "",
+  };
+  handleSearch = (event) => {
+    event.preventDefault();
+    this.props.searchCallback(this.state.query.toLowerCase());
+    console.log(this.state.query.toLowerCase());
+  };
   render() {
     return (
       <aside>
@@ -46,14 +54,33 @@ export default class NavbarAside extends Component {
                   Home
                 </a> */}
               </li>
-              <Form inline>
-                <FormControl
-                  type="text"
-                  placeholder="Search"
-                  className="mr-sm-2"
-                />
-                <Button variant="outline-success">Search</Button>
-              </Form>
+              <li>
+                <Form inline>
+                  <FormControl
+                    type="text"
+                    placeholder="Search"
+                    className="mr-sm-2"
+                    value={this.state.query}
+                    onChange={(e) => this.setState({ query: e.target.value })}
+                  />
+                  <Button
+                    id="search-icon"
+                    variant="outline-success"
+                    onClick={this.handleSearch}
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      fill="currentColor"
+                      class="bi bi-search"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                    </svg>
+                  </Button>
+                </Form>
+              </li>
               <li>
                 <a href="/artist/index.html">
                   <svg

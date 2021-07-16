@@ -13,7 +13,7 @@ export default class MyFooter extends Component {
                 id="player-track-img"
                 height="56"
                 width="56"
-                src="../assets/artist/images/albumCovers/album1.jpeg"
+                src={this.props.songImg}
                 alt=""
               />
             </div>
