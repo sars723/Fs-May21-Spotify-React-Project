@@ -1,3 +1,6 @@
+.aside-home {
+  margin-left: -20px;
+}
 .side-navbar {
   height: calc(100vh - 100px);
 }

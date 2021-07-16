@@ -1,3 +1,4 @@
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 /* import HomePage from './components/HomePage';
@@ -10,13 +11,17 @@ import MyFooter from "./components/MyFooter";
 import MainAlbum from './components/MainAlbum';
 import MainArtist from './components/MainArtist';
 import {Container} from 'react-bootstrap'
+import {useState} from 'react'
 
 function App() {
+  const [songImg,setSongImg]=useState('')
+  const [songArtist,setSongArtist]=useState('')
+  const [songTitle,setSongTitle]=useState('')
   return (
   <Router>
     <div className="d-flex justify-content-start">
     <NavbarAside />
-      <Route path="/" exact render={(props) => <MainHome {...props} />} />
+      <Route path="/" exact render={(props) => <MainHome {...props} getSongImg={(song)=>setSongImg(song)} getSongAtrist={(song)=>setSongArtist(song)} getSongTitle={(song)=>setSongTitle(song)} />} />
       <Route
         path="/artist/:artistId"
         exact
@@ -25,7 +30,7 @@ function App() {
       <Route path="/album/:albumId" exact render={(props) => <MainAlbum {...props} />} />
       </div>
       <Container fluid>
-      <MyFooter />
+      <MyFooter songImg={songImg} songArtist={songArtist} songTitle={songTitle}/>
       </Container>
    </Router>
   );

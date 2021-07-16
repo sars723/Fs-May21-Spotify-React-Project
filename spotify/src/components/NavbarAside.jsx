@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./css/NavbarAsideStyles.css";
-import { Nav } from "react-bootstrap";
+import { Nav, Form, FormControl, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 export default class NavbarAside extends Component {
@@ -16,8 +16,8 @@ export default class NavbarAside extends Component {
             />
             <ul>
               <li>
-                <Link to="/" className="nav-link">
-                  <div>
+                <Link to="/" className="nav-link ">
+                  <div className="aside-home">
                     {" "}
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -46,21 +46,14 @@ export default class NavbarAside extends Component {
                   Home
                 </a> */}
               </li>
-              <li>
-                <a href="#">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    fill="currentColor"
-                    className="bi bi-search"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                  </svg>
-                  Search
-                </a>
-              </li>
+              <Form inline>
+                <FormControl
+                  type="text"
+                  placeholder="Search"
+                  className="mr-sm-2"
+                />
+                <Button variant="outline-success">Search</Button>
+              </Form>
               <li>
                 <a href="/artist/index.html">
                   <svg

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Song from "./Song";
+import { Button } from "react-bootstrap";
 
 export default class MainArtist extends Component {
   state = {
@@ -58,7 +59,7 @@ export default class MainArtist extends Component {
     return (
       <main>
         <div className="container-fluid p-0">
-          <div className="row">
+          <div className="row hero-content text-white">
             {this.state.album && (
               <div className="col-12 col-md-10 col-lg-10 mt-5 text-center">
                 <h2 className="titleMain ">{this.state.album.name}</h2>
@@ -67,18 +68,20 @@ export default class MainArtist extends Component {
                   className="d-flex justify-content-center"
                   id="button-container"
                 >
-                  <button
-                    className="btn btn-success mr-2 mainButton"
+                  <Button
+                    variant="success"
+                    className=" rounded-pill mr-2  hero-play-btn"
                     id="playButton"
                   >
                     PLAY
-                  </button>
-                  <button
-                    className="btn btn-outline-light mainButton"
+                  </Button>
+                  <Button
+                    variant="success"
+                    className=" rounded-pill hero-follow-btn "
                     id="followButton"
                   >
                     FOLLOW
-                  </button>
+                  </Button>
                 </div>
               </div>
             )}
@@ -127,24 +130,6 @@ export default class MainArtist extends Component {
                       </p>
                     </div>
                   </div>
-                  /*   <div className="pt-5 mb-5">
-                <div className="row" id="apiLoaded">
-                  <div className="col-sm-auto col-md-auto text-center mb-5">
-                    <a href="/album_page.html">
-                      <img
-                        className="img-fluid"
-                        src="https://cdns-images.dzcdn.net/images/cover/e2491c22fb19c154e46b449ff7aa7a62/250x250-000000-80-0-0.jpg"
-                        alt="1"
-                      />
-                    </a>
-                    <p>
-                      <a href="#"> Track: "Shape Of My Hear..." </a>
-                      <br />
-                      <a href="#"> Album: "Ten Summoner's T..." </a>
-                    </p>
-                  </div>
-                </div>
-              </div> */
                 ))}
             </div>
           </section>

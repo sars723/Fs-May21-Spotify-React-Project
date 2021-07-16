@@ -189,6 +189,11 @@ class MainHome extends Component {
                     className="img-fluid"
                     src={album.album.cover_medium}
                     alt="img placeholder"
+                    onClick={() => {
+                      this.props.getSongImg(album.album.cover_medium);
+                      this.props.getSongArtist(album.artist.name);
+                      this.props.getSongTitle(album.album.title);
+                    }}
                   />
                   <div className="p-1">
                     <p

@@ -1,3 +1,34 @@
+.hero-content .header-btns > button {
+  width: 140px;
+  letter-spacing: 1px;
+}
+.hero-content .hero-play-btn {
+  background-color: #1cb955;
+  border: 2px solid #1cb955;
+  color: white;
+  backface-visibility: hidden;
+  transition: all 0.5s;
+}
+.hero-content .hero-follow-btn {
+  color: white;
+  margin: 0 10px;
+  border: 2px solid white;
+  background-color: rgba(0, 0, 0, 0.4);
+  backface-visibility: hidden;
+  transition: all 0.5s;
+}
+.hero-follow-btn.followed {
+  background-color: #1cb955;
+}
+.hero-content .header-btns i {
+  color: white;
+  font-size: 1.5em;
+  backface-visibility: hidden;
+  transition: all 0.5s;
+}
+.hero-content .header-btns > *:hover {
+  transform: scale(1.05) translateZ(0);
+}
 .main-home .main-home-album-title {
   font-weight: bold;
   font-size: 0.9em;
