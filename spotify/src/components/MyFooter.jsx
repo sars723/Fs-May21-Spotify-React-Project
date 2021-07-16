@@ -18,7 +18,7 @@ export default class MyFooter extends Component {
               />
             </div>
             <div className="d-none d-md-flex flex-column track-text">
-              <p id="player-track-title"></p>
+              <p id="player-track-title">{this.props.songTitle}</p>
               <p id="player-track-artist"></p>
             </div>
 

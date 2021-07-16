@@ -87,7 +87,7 @@ export default class MainArtist extends Component {
             )}
           </div>
           <section className="container" id="throwback">
-            <h2>#THROWBACKTHURSDAY</h2>
+            <h2></h2>
             <div
               className="
                     throwback-cards

@@ -57,6 +57,7 @@ export default class NavbarAside extends Component {
               <li>
                 <Form inline>
                   <FormControl
+                    id="search-control"
                     type="text"
                     placeholder="Search"
                     className="mr-sm-2"
@@ -64,7 +65,7 @@ export default class NavbarAside extends Component {
                     onChange={(e) => this.setState({ query: e.target.value })}
                   />
                   <Button
-                    id="search-icon"
+                    id="btn-search"
                     variant="outline-success"
                     onClick={this.handleSearch}
                   >

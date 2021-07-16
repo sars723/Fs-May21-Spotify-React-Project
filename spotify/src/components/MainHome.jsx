@@ -178,7 +178,7 @@ class MainHome extends Component {
           </nav>
 
           <section className="container" id="throwback">
-            <h2>#THROWBACKTHURSDAY</h2>
+            <h2>{this.props.query}</h2>
             <div
               className="
                     throwback-cards
@@ -200,7 +200,10 @@ class MainHome extends Component {
                     className="img-fluid"
                     src={album.album.cover_medium}
                     alt="img placeholder"
-                    onClick={this.getSong}
+                    onClick={() => {
+                      this.props.getSongImg(album.album.cover_medium);
+                      this.props.getSongTitle(album.album.title);
+                    }}
                   />
                   <div className="p-1">
                     <p

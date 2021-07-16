@@ -1,5 +1,11 @@
 #btn-search {
-  width: 80px;
+  width: 40px;
+  color: white;
+  border: none;
+  background-color: transparent;
+}
+#search-control {
+  width: 140px;
 }
 .aside-home {
   margin-left: -20px;
