@@ -187,15 +187,18 @@ class MainHome extends Component {
                   "
             >
               {this.state.albums.map((album) => (
-                /* <Song
-                    albumId={album.album.id}
-                    artistId={album.artist.id}
-                    img={album.album.cover_medium}
-                    albumTitle={album.album.title}
-                    artistName={album.artist.name}
-                  /> */
+                <Song
+                  albumId={album.album.id}
+                  artistId={album.artist.id}
+                  img={album.album.cover_medium}
+                  albumTitle={album.album.title}
+                  artistName={album.artist.name}
+                  getSongImg={this.props.getSongImg}
+                  getSongTitle={this.props.getSongTitle}
+                  getSongArtist={this.props.getSongArtist}
+                />
 
-                <div className="col text-center text-white mb-3">
+                /*  <div className="col text-center text-white mb-3">
                   <img
                     className="img-fluid"
                     src={album.album.cover_medium}
@@ -206,15 +209,16 @@ class MainHome extends Component {
                     }}
                   />
                   <div className="p-1">
-                    <p
-                      className="main-home-album-title"
-                      onClick={() =>
-                        this.props.history.push("/album/" + album.album.id)
-                      }
-                    >
-                      {album.album.title}
-                    </p>
-
+                    <Link to={{ pathname: `album/${album.album.id}` }}>
+                      <p
+                        className="main-home-album-title"
+                       // onClick={() =>
+                        //this.props.history.push("/album/" + album.album.id)
+                     // }
+                      >
+                        {album.album.title}
+                      </p>
+                    </Link>
                     <p
                       className="main-home-artist-name"
                       onClick={() =>
@@ -225,7 +229,7 @@ class MainHome extends Component {
                       {album.artist.name}
                     </p>
                   </div>
-                </div>
+                </div> */
               ))}
             </div>
           </section>

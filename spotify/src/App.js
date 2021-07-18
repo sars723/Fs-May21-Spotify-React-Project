@@ -23,7 +23,7 @@ function App() {
     <div className="d-flex justify-content-start">
       {console.log(songImg)}
     <NavbarAside  searchCallback={setQuery}/>
-      {!query?<Route path="/" exact render={(props) => <MainHome query="shakira" {...props} getSongImg={(song)=>setSongImg(song)} getSongAtrist={(song)=>setSongArtist(song)} getSongTitle={(song)=>setSongTitle(song)} />} />:<Route path="/" exact render={(props) => <MainHome query={query} {...props} getSongImg={(song)=>setSongImg(song)} getSongAtrist={(song)=>setSongArtist(song)} getSongTitle={(song)=>setSongTitle(song)} />} />}
+      {!query?<Route path="/" exact render={(props) => <MainHome query="shakira" {...props} getSongImg={(song)=>setSongImg(song)} getSongArtist={(song)=>setSongArtist(song)} getSongTitle={(song)=>setSongTitle(song)} />} />:<Route path="/" exact render={(props) => <MainHome query={query} {...props} getSongImg={(song)=>setSongImg(song)} getSongAtrist={(song)=>setSongArtist(song)} getSongTitle={(song)=>setSongTitle(song)} />} />}
       <Route
         path="/artist/:artistId"
         exact

@@ -120,6 +120,7 @@ export default class MainArtist extends Component {
                         {" "}
                         {track.title}
                       </p>
+
                       <p
                         className="main-home-album-title"
                         onClick={() =>

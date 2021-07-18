@@ -1,10 +1,20 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 
-export default class Song extends Component {
+class Song extends Component {
   render() {
     return (
       <div className="col text-center text-white mb-3">
-        <img className="img-fluid" src={this.props.img} alt="img placeholder" />
+        <img
+          className="img-fluid"
+          src={this.props.img}
+          alt="img placeholder"
+          onClick={() => {
+            this.props.getSongImg(this.props.img);
+            this.props.getSongTitle(this.props.albumTitle);
+            this.props.getSongArtist(this.props.artistName);
+          }}
+        />
         <div className="p-1">
           <p
             className="main-home-album-title"
@@ -29,3 +39,4 @@ export default class Song extends Component {
     );
   }
 }
+export default withRouter(Song);
